@@ -88,6 +88,7 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
+
   void showRequestSheet() async {
     setState(() {
       rideDetailsHeight = 0.0;
