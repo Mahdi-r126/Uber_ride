@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "317618665445",
+    "firebase_url": "https://uber-e176a-default-rtdb.firebaseio.com",
+    "project_id": "uber-e176a",
+    "storage_bucket": "uber-e176a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317618665445:android:fc244561b6bcf6b5afa10c",
+        "android_client_info": {
+          "package_name": "com.example.uber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317618665445-jnoglc7ebl4vb4d4fkm3dhqem6mhteru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjDW8wKhVzZgGc8RuQrWj0okPUeihCKOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317618665445-jnoglc7ebl4vb4d4fkm3dhqem6mhteru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
