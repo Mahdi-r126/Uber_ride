@@ -43,6 +43,7 @@ dependencies:
   flutter_polyline_points: ^0.2.1
   animated_text_kit: ^2.1.0
   flutter_native_splash:
+  flutter_geofire: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -5,6 +5,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_geofire/flutter_geofire.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -70,6 +71,7 @@ class _MainPageState extends State<MainPage> {
     // ignore: use_build_context_synchronously
     String address = await HelperMethods.findAddress(position, context);
     print(address);
+    startGeofireListener();
   }
 
   void showDetailSheet() async {
@@ -87,7 +89,6 @@ class _MainPageState extends State<MainPage> {
       }
     });
   }
-
 
   void showRequestSheet() async {
     setState(() {
@@ -671,6 +672,39 @@ class _MainPageState extends State<MainPage> {
     setState(() {
       _markers.add(pickupMarker);
       _markers.add(destinationMarker);
+    });
+  }
+
+  void startGeofireListener() {
+    Geofire.initialize("driversAvailable");
+    Geofire.queryAtLocation(
+            currentPosition.latitude, currentPosition.longitude, 20)
+        ?.listen((map) {
+      print(map);
+      if (map != null) {
+        var callBack = map['callBack'];
+
+        //latitude will be retrieved from map['latitude']
+        //longitude will be retrieved from map['longitude']
+
+        switch (callBack) {
+          case Geofire.onKeyEntered:
+            break;
+
+          case Geofire.onKeyExited:
+            break;
+
+          case Geofire.onKeyMoved:
+            // Update your key's location
+            break;
+
+          case Geofire.onGeoQueryReady:
+            // All Intial Data is loaded
+            print(map['result']);
+
+            break;
+        }
+      }
     });
   }
 }
