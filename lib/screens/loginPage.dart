@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uber/brand_colors.dart';
 import 'package:uber/screens/mainPage.dart';
 import 'package:uber/screens/registrationPage.dart';
@@ -50,6 +51,9 @@ class LoginPage extends StatelessWidget {
       if (user != null) {
         DatabaseReference userref =
             FirebaseDatabase.instance.reference().child('user/${user.uid}');
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setBool("isLoggedIn", true);
+        prefs.setString("id", user.uid);
         Navigator.pop(context);
         Navigator.pushNamedAndRemoveUntil(
             context, MainPage.id, (route) => false);

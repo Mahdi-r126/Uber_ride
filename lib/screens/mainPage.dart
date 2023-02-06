@@ -13,7 +13,9 @@ import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:uber/GlobalVar.dart';
 import 'package:uber/Models/directionDetails.dart';
+import 'package:uber/Models/nearbyDrivers.dart';
 import 'package:uber/brand_colors.dart';
+import 'package:uber/helper/fireHelper.dart';
 import 'package:uber/helper/helperMethods.dart';
 import 'package:uber/list.dart';
 import 'package:uber/providers/appdata.dart';
@@ -55,6 +57,8 @@ class _MainPageState extends State<MainPage> {
 
   late DatabaseReference rideRef;
 
+  bool nearbyDriversKeyLoaded = false;
+
   void SetCurrentLocation() async {
     Position position = await geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.bestForNavigation);
@@ -72,6 +76,82 @@ class _MainPageState extends State<MainPage> {
     String address = await HelperMethods.findAddress(position, context);
     print(address);
     startGeofireListener();
+  }
+
+  void startGeofireListener() {
+    Geofire.initialize("driversAvailable");
+    Geofire.queryAtLocation(
+            currentPosition.latitude, currentPosition.longitude, 20)
+        ?.listen((map) {
+      print(map);
+      if (map != null) {
+        var callBack = map['callBack'];
+
+        //latitude will be retrieved from map['latitude']
+        //longitude will be retrieved from map['longitude']
+
+        switch (callBack) {
+          case Geofire.onKeyEntered:
+            NearbyDrivers nearbyDrivers = NearbyDrivers();
+            nearbyDrivers.key = map['key'];
+            nearbyDrivers.latitude = map['latitude'];
+            nearbyDrivers.longitude = map['longitude'];
+
+            FireHelper.nearbyDriversList.add(nearbyDrivers);
+
+            if (nearbyDriversKeyLoaded) {
+              updateDriversOnMap();
+            }
+            break;
+
+          case Geofire.onKeyExited:
+            FireHelper.removeFromList(map['key']);
+            updateDriversOnMap();
+            break;
+
+          case Geofire.onKeyMoved:
+            // Update your key's location
+            NearbyDrivers nearbyDrivers = NearbyDrivers();
+            nearbyDrivers.key = map['key'];
+            nearbyDrivers.latitude = map['latitude'];
+            nearbyDrivers.longitude = map['longitude'];
+            FireHelper.updateNearbyLocation(nearbyDrivers);
+            updateDriversOnMap();
+            break;
+
+          case Geofire.onGeoQueryReady:
+            // All Intial Data is loaded
+            nearbyDriversKeyLoaded = true;
+            updateDriversOnMap();
+            print("Nearby Drivers: ${FireHelper.nearbyDriversList.length}");
+            print(map['result']);
+
+            break;
+        }
+      }
+    });
+  }
+
+  updateDriversOnMap() {
+    setState(() {
+      _markers.clear();
+    });
+    Set<Marker> tempMarker = Set<Marker>();
+
+    for (NearbyDrivers nearbyDrivers in FireHelper.nearbyDriversList) {
+      LatLng driverPosition =
+          LatLng(nearbyDrivers.latitude, nearbyDrivers.longitude);
+      Marker marker = Marker(
+          markerId: MarkerId("driver ${nearbyDrivers.key}"),
+          icon:
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+          position: driverPosition,
+          rotation: HelperMethods.generateRandomNumber(360));
+      tempMarker.add(marker);
+    }
+    setState(() {
+      _markers = tempMarker;
+    });
   }
 
   void showDetailSheet() async {
@@ -672,39 +752,6 @@ class _MainPageState extends State<MainPage> {
     setState(() {
       _markers.add(pickupMarker);
       _markers.add(destinationMarker);
-    });
-  }
-
-  void startGeofireListener() {
-    Geofire.initialize("driversAvailable");
-    Geofire.queryAtLocation(
-            currentPosition.latitude, currentPosition.longitude, 20)
-        ?.listen((map) {
-      print(map);
-      if (map != null) {
-        var callBack = map['callBack'];
-
-        //latitude will be retrieved from map['latitude']
-        //longitude will be retrieved from map['longitude']
-
-        switch (callBack) {
-          case Geofire.onKeyEntered:
-            break;
-
-          case Geofire.onKeyExited:
-            break;
-
-          case Geofire.onKeyMoved:
-            // Update your key's location
-            break;
-
-          case Geofire.onGeoQueryReady:
-            // All Intial Data is loaded
-            print(map['result']);
-
-            break;
-        }
-      }
     });
   }
 }

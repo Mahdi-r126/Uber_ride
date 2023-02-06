@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -125,5 +127,11 @@ class HelperMethods {
         print("+++++My name is ${currentUserInfo.fullName}");
       }
     });
+  }
+
+  static double generateRandomNumber(int max) {
+    var randoGenerator = Random();
+    int randInt = randoGenerator.nextInt(max);
+    return randInt.toDouble();
   }
 }

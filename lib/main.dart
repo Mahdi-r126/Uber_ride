@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uber/providers/appdata.dart';
 import 'package:uber/screens/loginPage.dart';
 import 'package:uber/screens/mainPage.dart';
@@ -24,17 +25,15 @@ Future<void> main() async {
             databaseURL: 'https://uber-e176a-default-rtdb.firebaseio.com',
           ),
   );
-  runApp(const MyApp());
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var status = prefs.getBool('isLoggedIn');
+  runApp(MyApp(status: status,));
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  bool status;
+  MyApp({required this.status});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -46,7 +45,7 @@ class _MyAppState extends State<MyApp> {
           fontFamily: 'bolt-regular',
           primarySwatch: Colors.blue,
         ),
-        initialRoute: LoginPage.id,
+        initialRoute: (status == false || status==null) ? LoginPage.id : MainPage.id,
         routes: {
           RegistrationPage.id: (context) => RegistrationPage(),
           LoginPage.id: (context) => LoginPage(),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uber/Styles/styles.dart';
+import 'package:uber/screens/loginPage.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({
@@ -71,6 +73,16 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(OMIcons.info),
             title: Text("About", style: DrawerItemStyles),
+          ),
+          ListTile(
+            leading: const Icon(Icons.logout_outlined),
+            title: Text("Log out", style: DrawerItemStyles),
+            onTap: () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setBool('isLoggedIn',false);
+              // ignore: use_build_context_synchronously
+              Navigator.pushNamedAndRemoveUntil(context, LoginPage.id, (route) => false);
+            },
           ),
         ],
       ),
