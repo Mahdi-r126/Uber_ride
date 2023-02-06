@@ -51,6 +51,8 @@ class _MainPageState extends State<MainPage> {
   Set<Polyline> _polylines = {};
   Set<Marker> _markers = {};
 
+  late BitmapDescriptor nearbyIcon;
+
   var directionDetails;
 
   DirectionDetails? tripDetails;
@@ -144,7 +146,7 @@ class _MainPageState extends State<MainPage> {
       Marker marker = Marker(
           markerId: MarkerId("driver ${nearbyDrivers.key}"),
           icon:
-              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+              nearbyIcon,
           position: driverPosition,
           rotation: HelperMethods.generateRandomNumber(360));
       tempMarker.add(marker);
@@ -152,6 +154,14 @@ class _MainPageState extends State<MainPage> {
     setState(() {
       _markers = tempMarker;
     });
+  }
+
+  void createCustomMarker() {
+    ImageConfiguration imageConfiguration =
+        createLocalImageConfiguration(context, size: const Size(2, 2));
+    BitmapDescriptor.fromAssetImage(
+            imageConfiguration, "assets/images/car_android.png")
+        .then((icon) => nearbyIcon = icon);
   }
 
   void showDetailSheet() async {
@@ -245,6 +255,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    createCustomMarker();
     return Scaffold(
         drawer: Container(
           width: 250,
