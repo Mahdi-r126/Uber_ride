@@ -16,7 +16,7 @@ The feathers of this app are :<br />
 7- accept trip by a driver in <a href="https://github.com/Mahdi-r126/uber_drivers">Driver</a> (SOON)<br />
 ## Preview
 <p float="left">
-  <img src="https://www.dropbox.com/s/jp5fkqorlm287er/photo1675940552%282%29.jpeg?dl=0" width="400"/>
+  <img src="![My Remote Image](https://www.dropbox.com/s/jp5fkqorlm287er/photo1675940552%282%29.jpeg?dl=0)" width="400"/>
   <img src="" width="400"/>
 </p>
 <p float="left">
