@@ -15,22 +15,9 @@ The feathers of this app are :<br />
 6- show nearby online drivers in <a href="https://github.com/Mahdi-r126/uber_drivers">Driver</a><br />
 7- accept trip by a driver in <a href="https://github.com/Mahdi-r126/uber_drivers">Driver</a> (SOON)<br />
 ## Preview
-<p float="left">
-  <img src="![My Remote Image](https://www.dropbox.com/s/jp5fkqorlm287er/photo1675940552%282%29.jpeg?dl=0)" width="400"/>
-  <img src="" width="400"/>
-</p>
-<p float="left">
-  <img src="" width="400"/>
-  <img src="" width="400"/>
-</p>
-<p float="left">
-  <img src="" width="400"/>
-  <img src="" width="400"/>
-</p>
-<p float="left">
-  <img src="" width="400"/>
-  <img src="" width="400"/>
-</p>
+  <img src="https://user-images.githubusercontent.com/75057732/217856387-ce5016f4-3160-44e9-90f2-3324146158e7.jpg" width="400"/>
+  <img src="https://user-images.githubusercontent.com/75057732/217856561-7e5280c3-fd3e-4c2a-b77d-015125371de8.jpg" width="400"/>
+  <img src="https://user-images.githubusercontent.com/75057732/217856656-c686746a-5ddf-4f79-80b6-cd0a1d059c35.jpg" width="400"/>
 
 ## Clone project
 
