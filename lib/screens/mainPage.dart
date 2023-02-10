@@ -100,6 +100,7 @@ class _MainPageState extends State<MainPage> {
             nearbyDrivers.longitude = map['longitude'];
 
             FireHelper.nearbyDriversList.add(nearbyDrivers);
+            
 
             if (nearbyDriversKeyLoaded) {
               updateDriversOnMap();
@@ -145,8 +146,7 @@ class _MainPageState extends State<MainPage> {
           LatLng(nearbyDrivers.latitude, nearbyDrivers.longitude);
       Marker marker = Marker(
           markerId: MarkerId("driver ${nearbyDrivers.key}"),
-          icon:
-              nearbyIcon,
+          icon: nearbyIcon,
           position: driverPosition,
           rotation: HelperMethods.generateRandomNumber(360));
       tempMarker.add(marker);
@@ -180,6 +180,13 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    HelperMethods.getCurrentUser();
+  }
+
   void showRequestSheet() async {
     setState(() {
       rideDetailsHeight = 0.0;
@@ -193,13 +200,6 @@ class _MainPageState extends State<MainPage> {
       }
     });
     createRideRequest();
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    HelperMethods.getCurrentUser();
   }
 
   void createRideRequest() {
@@ -328,8 +328,8 @@ class _MainPageState extends State<MainPage> {
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20)),
-                      boxShadow: [
-                        const BoxShadow(
+                      boxShadow: const [
+                         BoxShadow(
                             color: BrandColors.colorGreen,
                             blurRadius: 5,
                             offset: Offset(0.7, 0.7),
@@ -485,7 +485,7 @@ class _MainPageState extends State<MainPage> {
                   decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius:
-                          BorderRadius.only(topLeft: Radius.circular(15)),
+                          BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),
                       boxShadow: [
                         BoxShadow(
                             blurRadius: 15,
