@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:uber/Models/addressModels.dart';
-import 'package:uber/Models/directionDetails.dart';
-import 'package:uber/helper/requestHelper.dart';
-import 'package:uber/providers/appdata.dart';
+import 'package:untitled4/helper/requestHelper.dart';
 
 import '../GlobalVar.dart';
+import '../Models/addressModels.dart';
+import '../Models/directionDetails.dart';
 import '../Models/user.dart';
+import '../providers/appdata.dart';
 
 class HelperMethods {
   static Future<String> findAddress(Position position, context) async {

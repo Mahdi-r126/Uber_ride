@@ -11,20 +11,20 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:provider/provider.dart';
-import 'package:uber/GlobalVar.dart';
-import 'package:uber/Models/directionDetails.dart';
-import 'package:uber/Models/nearbyDrivers.dart';
-import 'package:uber/brand_colors.dart';
-import 'package:uber/helper/fireHelper.dart';
-import 'package:uber/helper/helperMethods.dart';
-import 'package:uber/list.dart';
-import 'package:uber/providers/appdata.dart';
-import 'package:uber/screens/searchPage.dart';
-import 'package:uber/widgets/ProgressDialog.dart';
-import 'package:uber/widgets/Text.dart';
-import 'package:uber/widgets/taxiButton.dart';
+import 'package:untitled4/screens/searchPage.dart';
 
+
+import '../GlobalVar.dart';
+import '../Models/directionDetails.dart';
+import '../Models/nearbyDrivers.dart';
+import '../brand_colors.dart';
+import '../helper/fireHelper.dart';
+import '../helper/helperMethods.dart';
+import '../providers/appdata.dart';
 import '../widgets/Drawer.dart';
+import '../widgets/ProgressDialog.dart';
+import '../widgets/Text.dart';
+import '../widgets/taxiButton.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

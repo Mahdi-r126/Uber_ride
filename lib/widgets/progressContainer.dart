@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:uber/widgets/Text.dart';
 
 import '../brand_colors.dart';
+import 'Text.dart';
 
 class ProgressbarBox extends StatelessWidget {
   const ProgressbarBox();

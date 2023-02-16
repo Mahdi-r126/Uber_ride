@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:uber/brand_colors.dart';
+
+import '../brand_colors.dart';
 
 class ProgressDialog extends StatelessWidget {
   final String status;

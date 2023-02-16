@@ -5,12 +5,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:uber/screens/loginPage.dart';
-import 'package:uber/screens/mainPage.dart';
+
 
 import '../brand_colors.dart';
 import '../widgets/ProgressDialog.dart';
 import '../widgets/taxiButton.dart';
+import 'loginPage.dart';
 
 class RegistrationPage extends StatelessWidget {
   static const String id = "registration";

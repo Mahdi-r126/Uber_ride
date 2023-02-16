@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:uber/Styles/styles.dart';
-import 'package:uber/screens/loginPage.dart';
+
+import '../Styles/styles.dart';
+import '../screens/loginPage.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({

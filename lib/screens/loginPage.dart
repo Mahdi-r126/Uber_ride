@@ -6,12 +6,13 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:uber/brand_colors.dart';
-import 'package:uber/screens/mainPage.dart';
-import 'package:uber/screens/registrationPage.dart';
-import 'package:uber/widgets/ProgressDialog.dart';
+import 'package:untitled4/screens/registrationPage.dart';
 
+
+import '../brand_colors.dart';
+import '../widgets/ProgressDialog.dart';
 import '../widgets/taxiButton.dart';
+import 'mainPage.dart';
 
 class LoginPage extends StatelessWidget {
   static const String id = "login";

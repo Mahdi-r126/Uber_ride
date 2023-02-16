@@ -1,4 +1,5 @@
-import 'package:uber/Models/nearbyDrivers.dart';
+
+import '../Models/nearbyDrivers.dart';
 
 class FireHelper {
   static List<NearbyDrivers> nearbyDriversList = [];

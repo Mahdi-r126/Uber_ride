@@ -6,17 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
-import 'package:uber/Models/addressModels.dart';
-import 'package:uber/brand_colors.dart';
-import 'package:uber/helper/helperMethods.dart';
-import 'package:uber/helper/requestHelper.dart';
-import 'package:uber/providers/appdata.dart';
-import 'package:uber/widgets/ProgressDialog.dart';
-import 'package:uber/widgets/progressContainer.dart';
-import 'package:uber/widgets/taxiButton.dart';
+
 
 import '../Models/Prediction.dart';
+import '../Models/addressModels.dart';
+import '../brand_colors.dart';
+import '../helper/helperMethods.dart';
+import '../providers/appdata.dart';
 import '../widgets/Text.dart';
+import '../widgets/progressContainer.dart';
+import '../widgets/taxiButton.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

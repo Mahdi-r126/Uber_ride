@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uber/Models/addressModels.dart';
+
+import '../Models/addressModels.dart';
 
 class AppData extends ChangeNotifier {
   Address pickupAddress = Address();

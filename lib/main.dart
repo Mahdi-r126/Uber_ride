@@ -4,10 +4,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:uber/providers/appdata.dart';
-import 'package:uber/screens/loginPage.dart';
-import 'package:uber/screens/mainPage.dart';
-import 'package:uber/screens/registrationPage.dart';
+import 'package:untitled4/providers/appdata.dart';
+import 'package:untitled4/screens/loginPage.dart';
+import 'package:untitled4/screens/mainPage.dart';
+import 'package:untitled4/screens/registrationPage.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
